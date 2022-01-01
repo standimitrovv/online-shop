@@ -8,3 +8,7 @@ Second, run "npm run dev" to start the development server
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Have fun :) 
+
+## DONT claim as yours!
+
