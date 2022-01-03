@@ -23,7 +23,8 @@ const Shoes: React.FC = () => {
       const docRef = doc(db, 'navigation/shoes');
       const data = await getDoc(docRef);
       const { items } = data.data()!;
-      setShoes(items);
+      if (!items) return;
+      else setShoes(items);
     };
     getData();
   }, []);

@@ -29,7 +29,6 @@ const SingleCategoryItemPage: NextPage<Props> = ({ item }) => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const [category, itemId] = context.params!.item as string[];
   const item = await getSingleItemData('accessories', itemId);
-
   return {
     props: { item },
   };

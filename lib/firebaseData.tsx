@@ -14,27 +14,91 @@ import {
 //Component
 import NotFoundPage from '../components/pages/not-found';
 
-interface Data {
+interface MobileData {
+  name: string;
+  id: string;
+  order: number;
+  categories?: string[];
+}
+
+interface HomeData {
+  name: string;
+  href: string;
+  id: string;
+  src: string;
+  order: number;
+  alt: string;
+}
+
+interface StandartData {
   name: string;
   price: number;
   src: string[];
   id: string;
   category: string;
+  quantity: number;
   description: string;
-  sizes: Number[] | string[];
-  composition: string[];
-  sizeGuide: string | string[];
+  sizes?: Number[] | string[];
+  composition?: string[];
+  sizeGuide?: string;
 }
 
-export const getAllDataFromCollection = async (collectionName: string) => {
-  const itemsCollection = collection(db, collectionName);
+type AllDataTypes = StandartData | HomeData | MobileData;
+
+export async function getDataForMobileMenu() {
+  const itemsCollection = collection(db, 'mobile-menu');
   const data = await getDocs(itemsCollection);
-  if (!data) throw new Error('Could not get the data from the db');
-  const items: Data[] | {}[] = data.docs.map((doc) => ({
-    ...doc.data(),
-    id: doc.id,
-  }));
-  if (!items) throw new Error('Could not get the items from the db');
+
+  const items: MobileData[] = data.docs.map((doc) => {
+    const data = doc.data();
+    return {
+      name: data.name,
+      order: data.order,
+      categories: data.categories ? data.categories : null,
+      id: doc.id,
+    };
+  });
+  return items;
+}
+
+export async function getDataForHomePage() {
+  const itemsCollection = collection(db, 'home');
+  const data = await getDocs(itemsCollection);
+
+  const items: HomeData[] = data.docs.map((doc) => {
+    const data = doc.data();
+
+    return {
+      href: data.href,
+      alt: data.alt,
+      name: data.name,
+      order: data.order,
+      src: data.src,
+      id: doc.id,
+    };
+  });
+  return items;
+}
+
+export const getAllDataForCategory = async (categoryName: string) => {
+  const itemsCollection = collection(db, categoryName);
+  const data = await getDocs(itemsCollection);
+  if (!data) throw new Error('Couldnt get the docs ');
+  const items: StandartData[] = data.docs.map((doc) => {
+    const data = doc.data();
+    return {
+      category: data.category,
+      id: doc.id,
+      name: data.name,
+      price: data.price,
+      src: data.src,
+      composition: data.composition,
+      quantity: data.quantity,
+      description: data.description ? data.description : null,
+      sizeGuide: data.sizeGuide ? data.sizeGuide : null,
+      sizes: data.sizes ? data.sizes : null,
+    };
+  });
   return items;
 };
 

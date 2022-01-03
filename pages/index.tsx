@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import { GetStaticProps } from 'next';
 
 //Data extracting function
-import { getAllDataFromCollection } from '../lib/firebaseData';
+import { getDataForHomePage } from '../lib/firebaseData';
 
 //Components
 import Home from '../components/pages/home';
@@ -27,7 +27,7 @@ const HomePage: NextPage<Props> = ({ items }) => {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const items = await getAllDataFromCollection('home');
+  const items = await getDataForHomePage();
   if (!items) {
     return {
       notFound: true,

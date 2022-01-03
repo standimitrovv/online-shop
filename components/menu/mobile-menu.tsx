@@ -9,7 +9,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import Collapse from '@mui/material/Collapse';
 
 //Data extracting function
-import { getAllDataFromCollection } from '../../lib/firebaseData';
+import { getDataForMobileMenu } from '../../lib/firebaseData';
 
 // Icons
 import {
@@ -19,12 +19,12 @@ import {
   XIcon,
 } from '@heroicons/react/outline';
 
-type DataState = {
+interface DataState {
   name: string;
   id: string;
   order: number;
   categories?: string[];
-}[];
+}
 
 interface State {
   [x: string]: boolean;
@@ -42,13 +42,11 @@ const MobileMenu: React.FC = () => {
     shoes: false,
   });
   const [isOpen, setIsOpen] = useState(false);
-  const [data, setData] = useState<DataState | []>([]);
+  const [data, setData] = useState<DataState[] | []>([]);
 
   useEffect(() => {
     const getData = async () => {
-      const categoriesData: DataState | {}[] = await getAllDataFromCollection(
-        'mobile-menu'
-      );
+      const categoriesData: DataState[] = await getDataForMobileMenu();
       setData(categoriesData);
     };
 

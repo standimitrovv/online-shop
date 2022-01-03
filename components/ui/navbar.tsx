@@ -23,18 +23,18 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 //Icon
 import { SearchIcon } from '@heroicons/react/outline';
-import { getAllDataFromCollection } from '../../lib/firebaseData';
+import { getAllDataForCategory } from '../../lib/firebaseData';
 
 type DataState = {
   src: string[];
   name: string;
   price: number;
-  composition: string[];
+  composition?: string[];
   quantity: number;
   id: string;
   category: string;
   sizeGuide?: string | string[];
-  sizes?: string[];
+  sizes?: string[] | Number[];
   description?: string;
 }[];
 
@@ -56,9 +56,9 @@ const Navbar: React.FC = () => {
   useEffect(() => {
     const getData = async () => {
       setIsLoading(true);
-      const accessories = await getAllDataFromCollection('accessories');
-      const apparel = await getAllDataFromCollection('apparel');
-      const shoes = await getAllDataFromCollection('shoes');
+      const accessories = await getAllDataForCategory('accessories');
+      const apparel = await getAllDataForCategory('apparel');
+      const shoes = await getAllDataForCategory('shoes');
       const combinedData = [...accessories, ...apparel, ...shoes];
       const filteredData: DataState = combinedData.filter((item, i) => {
         if (searchingValue.trim().length < 2) return;
