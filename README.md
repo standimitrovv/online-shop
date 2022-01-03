@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project 
+This is a [Next.js](https://nextjs.org/) project. Entirely built with Next.js, Typescript, Tailwind CSS, Material UI
 
 ## Getting Started
 
