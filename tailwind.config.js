@@ -20,7 +20,7 @@ module.exports = {
       fontFamily: {
         logo: ['Permanent Marker'],
         satisfy: ['Satisfy'],
-        fb: ['Futura Book'],
+        fb: ['Jost'],
         nunito: ['Nunito'],
         playfair: ['Playfair Display'],
         mont: ['Montserrat'],
