@@ -37,13 +37,11 @@ interface StandartData {
   id: string;
   category: string;
   quantity: number;
-  description: string;
+  description?: string;
   sizes?: Number[] | string[];
   composition?: string[];
-  sizeGuide?: string;
+  sizeGuide?: string | string[];
 }
-
-type AllDataTypes = StandartData | HomeData | MobileData;
 
 export async function getDataForMobileMenu() {
   const itemsCollection = collection(db, 'mobile-menu');
@@ -65,9 +63,8 @@ export async function getDataForHomePage() {
   const itemsCollection = collection(db, 'home');
   const data = await getDocs(itemsCollection);
 
-  const items: HomeData[] = data.docs.map((doc) => {
+  const items: MobileData[] = data.docs.map((doc) => {
     const data = doc.data();
-
     return {
       href: data.href,
       alt: data.alt,
@@ -80,13 +77,14 @@ export async function getDataForHomePage() {
   return items;
 }
 
-export const getAllDataForCategory = async (categoryName: string) => {
+export const getDataForCategory = async (categoryName: string) => {
   const itemsCollection = collection(db, categoryName);
   const data = await getDocs(itemsCollection);
   if (!data) throw new Error('Couldnt get the docs ');
-  const items: StandartData[] = data.docs.map((doc) => {
+  const items = data.docs.map((doc) => {
     const data = doc.data();
-    return {
+
+    const item: StandartData = {
       category: data.category,
       id: doc.id,
       name: data.name,
@@ -98,6 +96,7 @@ export const getAllDataForCategory = async (categoryName: string) => {
       sizeGuide: data.sizeGuide ? data.sizeGuide : null,
       sizes: data.sizes ? data.sizes : null,
     };
+    return item;
   });
   return items;
 };

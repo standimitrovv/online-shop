@@ -19,7 +19,7 @@ import {
   XIcon,
 } from '@heroicons/react/outline';
 
-interface DataState {
+interface MobileData {
   name: string;
   id: string;
   order: number;
@@ -42,11 +42,11 @@ const MobileMenu: React.FC = () => {
     shoes: false,
   });
   const [isOpen, setIsOpen] = useState(false);
-  const [data, setData] = useState<DataState[] | []>([]);
+  const [data, setData] = useState<MobileData[] | []>([]);
 
   useEffect(() => {
     const getData = async () => {
-      const categoriesData: DataState[] = await getDataForMobileMenu();
+      const categoriesData: MobileData[] = await getDataForMobileMenu();
       setData(categoriesData);
     };
 

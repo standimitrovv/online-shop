@@ -28,11 +28,6 @@ const HomePage: NextPage<Props> = ({ items }) => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const items = await getDataForHomePage();
-  if (!items) {
-    return {
-      notFound: true,
-    };
-  }
 
   return {
     props: {

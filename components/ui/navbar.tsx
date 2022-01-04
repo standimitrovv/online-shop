@@ -23,7 +23,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 //Icon
 import { SearchIcon } from '@heroicons/react/outline';
-import { getAllDataForCategory } from '../../lib/firebaseData';
+import { getDataForCategory } from '../../lib/firebaseData';
 
 type DataState = {
   src: string[];
@@ -56,13 +56,16 @@ const Navbar: React.FC = () => {
   useEffect(() => {
     const getData = async () => {
       setIsLoading(true);
-      const accessories = await getAllDataForCategory('accessories');
-      const apparel = await getAllDataForCategory('apparel');
-      const shoes = await getAllDataForCategory('shoes');
+      const accessories = await getDataForCategory('accessories');
+      const apparel = await getDataForCategory('apparel');
+      const shoes = await getDataForCategory('shoes');
       const combinedData = [...accessories, ...apparel, ...shoes];
       const filteredData: DataState = combinedData.filter((item, i) => {
         if (searchingValue.trim().length < 2) return;
-        if (item.name.toLowerCase().includes(searchingValue.toLowerCase()))
+        if (
+          item &&
+          item.name.toLowerCase().includes(searchingValue.toLowerCase())
+        )
           return item;
       });
 
@@ -85,6 +88,10 @@ const Navbar: React.FC = () => {
     setSearchingValue('');
   };
 
+  const onInputBlurHandler = () => {
+    if (searchingValue.length === 0) setIsSearching(false);
+  };
+
   return (
     <nav
       className={`shadow-sm ${
@@ -103,7 +110,7 @@ const Navbar: React.FC = () => {
                 placeholder='Search for...'
                 className='border py-2 px-4 w-72 z-10'
                 value={searchingValue}
-                onBlur={() => setIsSearching(false)}
+                onBlur={onInputBlurHandler}
                 onChange={(e) => setSearchingValue(e.target.value)}
               />
               <div className='bg-black absolute z-20 left-60 top-0 py-2 pb-2 px-3  '>
@@ -136,13 +143,14 @@ const Navbar: React.FC = () => {
                       return (
                         <li
                           key={el.id}
-                          className='grid grid-cols-3 w-full h-20 hover:bg-gray-100 cursor-pointer'
-                          onClick={onItemClickHandler.bind(
-                            null,
-                            el.src[0].split('/')[2],
-                            el.category,
-                            el.id
-                          )}
+                          className='grid grid-cols-3 w-full h-20 z-30 hover:bg-gray-100 cursor-pointer'
+                          onClick={() =>
+                            onItemClickHandler(
+                              el.src[0].split('/')[2],
+                              el.category,
+                              el.id
+                            )
+                          }
                         >
                           <div className='flex items-center ml-4 col-span-1'>
                             <Image
