@@ -2,7 +2,7 @@ import type { NextPage, GetStaticProps, GetStaticPaths } from 'next';
 
 //Data extracting functions
 import {
-  getAllDataForCategory,
+  getDataForCategory,
   getSingleCategoryData,
 } from '../../lib/firebaseData';
 
@@ -31,7 +31,7 @@ interface CategoryData {
   id: string;
   category: string;
   quantity: number;
-  description: string;
+  description?: string;
   sizes?: Number[] | string[];
   composition?: string[];
 }
@@ -43,7 +43,7 @@ const ShoeCategoriePage: NextPage<Props> = ({ categoryData }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const categoryData: CategoryData[] = await getAllDataForCategory('shoes');
+  const categoryData: CategoryData[] = await getDataForCategory('shoes');
   const params = categoryData.map((shoe: CategoryData) => ({
     params: { category: shoe.category },
   }));

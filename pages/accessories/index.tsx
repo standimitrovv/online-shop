@@ -1,7 +1,7 @@
 import type { NextPage, GetStaticProps } from 'next';
 
 //Data extracting function
-import { getAllDataForCategory } from '../../lib/firebaseData';
+import { getDataForCategory } from '../../lib/firebaseData';
 
 //Component
 import AllCategoriesPage from '../../components/pages/categories/all-categories';
@@ -25,7 +25,7 @@ const AccessoriesPage: NextPage<Props> = ({ accessories }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const accessories = await getAllDataForCategory('accessories');
+  const accessories = await getDataForCategory('accessories');
 
   return {
     props: { accessories },

@@ -3,7 +3,7 @@ import type { NextPage, GetStaticProps, GetStaticPaths } from 'next';
 //Data extracting functions
 import {
   getSingleCategoryData,
-  getAllDataForCategory,
+  getDataForCategory,
 } from '../../lib/firebaseData';
 
 //Components
@@ -32,7 +32,7 @@ interface Data {
   quantity: number;
   id: string;
   category: string;
-  description: string;
+  description?: string;
   sizes?: Number[] | string[];
   composition?: string[];
 }
@@ -53,7 +53,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const data: Data[] = await getAllDataForCategory('apparel');
+  const data: Data[] = await getDataForCategory('apparel');
   const params = data.map((cloth) => ({
     params: { category: cloth.category },
   }));

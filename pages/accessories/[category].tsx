@@ -3,7 +3,7 @@ import type { NextPage, GetStaticProps, GetStaticPaths } from 'next';
 //Data extracting functions
 import {
   getSingleCategoryData,
-  getAllDataForCategory,
+  getDataForCategory,
 } from '../../lib/firebaseData';
 
 //Components
@@ -56,7 +56,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const data: Data[] = await getAllDataForCategory('accessories');
+  const data: Data[] = await getDataForCategory('accessories');
   const paths = data.map((accessory) => ({
     params: { category: accessory.category },
   }));
