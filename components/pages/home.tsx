@@ -46,7 +46,7 @@ const Home: React.FC<Props> = ({ items }) => {
         <h1 className='font-satisfy lg:text-4xl text-3xl text-center'>
           Our Collection Includes
         </h1>
-        <div className='mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  justify-items-center gap-y-8 md:gap-x-60 md:gap-y-24 lg:gap-x-12 lg:gap-y-10 '>
+        <div className='mt-16 grid px-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3  justify-items-center gap-y-8 md:gap-x-60 md:gap-y-24 lg:gap-x-12 lg:gap-y-10 '>
           {sortedItems &&
             sortedItems.map((item) => <Item key={item.id} piece={item} />)}
         </div>

@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
     <footer
       className={`bg-gray-50 ${
         path === '/checkout' && 'hidden'
-      } md:px-4 lg:px-16 xl:px-32 2xl:px-48 py-16  `}
+      } px-2 md:px-4 lg:px-16 xl:px-32 2xl:px-48 py-16  `}
     >
       <div className='grid grid-cols-1 md:grid-cols-3 justify-center justify-items-center text-center border-b border-black '>
         <div className='w-80 md:w-44 lg:w-64 xl:w-80'>

@@ -32,7 +32,7 @@ const Button: React.FC<Props> = ({
         bg === 'black'
           ? 'lg:bg-gray-700 hover:bg-black text-white'
           : 'bg-white text-black border-2 '
-      } bg-black mt-10 lg:w-96 w-80 rounded-sm cursor-pointer text-center py-4 lg:py-4 lg:px-8 group`}
+      } bg-black mt-10 lg:w-96 w-64 rounded-sm cursor-pointer text-center py-4 lg:py-4 lg:px-8 group`}
       onClick={handleButtonClick}
     >
       {href && (
