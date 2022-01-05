@@ -126,12 +126,12 @@ const CategoryItemPage: React.FC<Props> = ({ item }) => {
           )}
 
           <button
-            className='flex text-black py-4 px-6 border-2 border-gray-100 cursor-pointer justify-center w-6/12 mb-4 lg:px-4'
+            className='flex text-black py-4 px-6 border-2 border-gray-100 cursor-pointer justify-center w-3/4 lg:w-1/2 mb-4 lg:px-4'
             type='button'
             onClick={addToWishlistHandler}
           >
-            {!itemIsInWishlist && <HeartIcon className='icon-6 mr-2' />}
-            {itemIsInWishlist && <HeartIconSolid className='icon-6 mr-2' />}
+            {!itemIsInWishlist && <HeartIcon className='icon-6 mr-1' />}
+            {itemIsInWishlist && <HeartIconSolid className='icon-6 mr-1' />}
             <p>{!itemIsInWishlist ? 'Add to wishlist' : 'Browse wishlist'}</p>
           </button>
           <button

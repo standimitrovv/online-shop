@@ -216,7 +216,7 @@ const Checkouts = () => {
               <div>
                 <div className='mt-12 text-lg'>
                   <Divider>Express checkout</Divider>
-                  <div className='flex justify-center border-l border-r border-b pt-2 pb-4 mb-10'>
+                  <div className='flex justify-center md:border-l md:border-r border-b pt-2 pb-4 mb-10'>
                     <PaypalButton />
                     <button className='flex items-center bg-black text-white py-2 px-6 md:px-16 rounded-md'>
                       <p>Google</p>
@@ -224,7 +224,7 @@ const Checkouts = () => {
                     </button>
                   </div>
                 </div>
-                <div className='flex flex-col'>
+                <div className='flex flex-col text-xs lg:text-lg'>
                   <Divider>Or continue below to pay with a credit card</Divider>
                 </div>
                 <div className='mt-12'>

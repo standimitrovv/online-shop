@@ -102,7 +102,7 @@ const AllCategoriesPage: React.FC<Props> = ({ items }) => {
     <div className='text-3xl flex flex-col xl:flex-row justify-between '>
       <div className='text-xl font-fb py-4 px-6 xl:px-8 grid grid-cols-2 gap-x-6 xl:flex xl:flex-col'>
         <div>
-          <h1 className='text-lg md:text-xl border-b border-black'>
+          <h1 className='text-base md:text-xl border-b border-black'>
             SHOP BY CATEGORY
           </h1>
           <List>
@@ -140,7 +140,7 @@ const AllCategoriesPage: React.FC<Props> = ({ items }) => {
           </List>
         </div>
         <div className='xl:mt-4'>
-          <h1 className='border-b border-black'>SORT BY</h1>
+          <h1 className='border-b border-black text-base'>SORT BY</h1>
           <select
             className='py-2 px-2 mt-2 xl:mt-4'
             onChange={(e) => setSortType(e.target.value)}

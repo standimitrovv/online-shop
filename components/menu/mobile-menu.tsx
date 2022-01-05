@@ -144,25 +144,31 @@ const MobileMenu: React.FC = () => {
                       unmountOnExit
                     >
                       <ul className='ml-8 pl-4 border-l-2 border-gray-100'>
-                        {category.categories?.map((piece, index) => (
-                          <Link
-                            href={
-                              index === 0
-                                ? `/${[category.name]}`
-                                : `/${[category.name]}/${piece.toLowerCase()}`
-                            }
-                            key={index}
-                          >
-                            <a>
-                              <li
-                                className='py-4 cursor-pointer'
-                                onClick={() => setIsOpen(false)}
-                              >
-                                {piece}
-                              </li>
-                            </a>
-                          </Link>
-                        ))}
+                        {category.categories?.map((piece, index) => {
+                          const item = piece.toLowerCase();
+                          const transformedItemId = item.includes(' ')
+                            ? item.split(' ').join('-')
+                            : item;
+                          return (
+                            <Link
+                              href={
+                                index === 0
+                                  ? `/${[category.name]}`
+                                  : `/${[category.name]}/${transformedItemId}`
+                              }
+                              key={index}
+                            >
+                              <a>
+                                <li
+                                  className='py-4 cursor-pointer'
+                                  onClick={() => setIsOpen(false)}
+                                >
+                                  {piece}
+                                </li>
+                              </a>
+                            </Link>
+                          );
+                        })}
                       </ul>
                     </Collapse>
                   </Fragment>
