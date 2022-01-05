@@ -181,9 +181,9 @@ const Checkouts = () => {
               orderProgress.payment && 'lg:col-span-5 h-screen'
             } `}
           >
-            <div className='flex items-center text-xs'>
+            <div className='flex items-center justify-center md:justify-start text-xs'>
               <p
-                className={`mr-6 ${
+                className={`mr-2 md:mr-6 ${
                   !orderProgress.information
                     ? 'text-gray-400 cursor-text'
                     : 'cursor-pointer'
@@ -193,7 +193,7 @@ const Checkouts = () => {
               </p>
               <ChevronRightIcon className='w-3 h-3 text-gray-400' />
               <p
-                className={`mr-6 ml-6 ${
+                className={`mr-2 ml-2 md:mr-6 md:ml-6 ${
                   !orderProgress.shipping
                     ? 'text-gray-400 cursor-text'
                     : 'cursor-pointer'
@@ -203,7 +203,7 @@ const Checkouts = () => {
               </p>
               <ChevronRightIcon className='w-3 h-3 text-gray-400 ' />
               <p
-                className={`ml-6 ${
+                className={`ml-2 md:ml-6 ${
                   !orderProgress.payment
                     ? 'text-gray-400 cursor-text'
                     : 'cursor-pointer'
