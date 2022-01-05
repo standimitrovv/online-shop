@@ -177,11 +177,11 @@ const Checkouts = () => {
           {/*Left side */}
 
           <div
-            className={`bg-gray-50 px-12 lg:px-16 2xl:pl-44 2xl:pr-24 py-20 lg:col-span-3 ${
+            className={`bg-gray-50 px-5 lg:px-16 2xl:pl-44 2xl:pr-24 py-20 lg:col-span-3 ${
               orderProgress.payment && 'lg:col-span-5 h-screen'
             } `}
           >
-            <div className='flex items-center justify-center md:justify-start text-xs'>
+            <div className='flex items-center justify-start text-xs'>
               <p
                 className={`mr-2 md:mr-6 ${
                   !orderProgress.information
@@ -326,9 +326,9 @@ const Checkouts = () => {
             {orderProgress.shipping && formIsValid && (
               <div className='h-[630px]'>
                 <div className='mt-12 font-normal border'>
-                  <div className='border-b grid grid-cols-5 py-3 px-4'>
+                  <div className='border-b grid grid-cols-5 py-3 px-3 md:px-4'>
                     <p className='text-gray-400 col-span-1'>Contact</p>
-                    <p className='ml-2 md:ml-0 col-span-3'>
+                    <p className='ml-2 md:ml-0 col-span-3 '>
                       {userData.contact}
                     </p>
                     <button
@@ -338,7 +338,7 @@ const Checkouts = () => {
                       CHANGE
                     </button>
                   </div>
-                  <div className='grid grid-cols-5 py-3 px-4'>
+                  <div className='grid grid-cols-5 py-3 px-3 md:px-4'>
                     <p className='text-gray-400 col-span-1'>Ship to</p>
                     <p className='ml-2 md:ml-0 col-span-3 break-all'>
                       {userData.company && userData.company + ','}
@@ -364,13 +364,13 @@ const Checkouts = () => {
                 </div>
                 <div className='flex mt-12 justify-between'>
                   <div className='flex items-center md:space-x-2 text-gray-400'>
-                    <ChevronLeftIcon className='w-4 h-4' />
-                    <button onClick={goToInformation}>
+                    <ChevronLeftIcon className='w-4 h-4 mr-2' />
+                    <button onClick={goToInformation} className='w-1/2'>
                       Return to information
                     </button>
                   </div>
                   <button
-                    className='bg-black text-white py-5 px-4 md:px-8 text-sm font-bold'
+                    className='bg-black text-white py-5 md:px-8 text-sm font-bold'
                     onClick={goToPayment}
                   >
                     CONTINUE TO PAYMENT
