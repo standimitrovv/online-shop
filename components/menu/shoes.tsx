@@ -62,15 +62,20 @@ const Shoes: React.FC = () => {
         </Link>
         <Divider />
         {shoes &&
-          shoes.map((piece, i) => (
-            <Link key={i} href={`/shoes/${piece.toLowerCase()}`}>
-              <a>
-                <MenuItem onClick={handleClose} key={i} disableRipple>
-                  {piece}
-                </MenuItem>
-              </a>
-            </Link>
-          ))}
+          shoes.map((piece, i) => {
+            const formattedPiece = piece.includes(' ')
+              ? piece.toLowerCase().split(' ').join('-')
+              : piece.toLowerCase();
+            return (
+              <Link key={i} href={`/shoes/${formattedPiece}`}>
+                <a>
+                  <MenuItem onClick={handleClose} key={i} disableRipple>
+                    {piece}
+                  </MenuItem>
+                </a>
+              </Link>
+            );
+          })}
       </Menu>
     </div>
   );

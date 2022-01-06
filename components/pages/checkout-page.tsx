@@ -177,7 +177,7 @@ const Checkouts = () => {
           {/*Left side */}
 
           <div
-            className={`bg-gray-50 px-5 lg:px-16 2xl:pl-44 2xl:pr-24 py-20 lg:col-span-3 ${
+            className={`bg-gray-50 px-5 lg:px-16 2xl:pl-56 2xl:pr-36 py-20 lg:col-span-3 ${
               orderProgress.payment && 'lg:col-span-5 h-screen'
             } `}
           >
@@ -362,15 +362,18 @@ const Checkouts = () => {
                     <p className='ml-auto'>{deliveryFee}</p>
                   </div>
                 </div>
-                <div className='flex mt-12 justify-between'>
-                  <div className='flex items-center md:space-x-2 text-gray-400'>
-                    <ChevronLeftIcon className='w-4 h-4 mr-2' />
-                    <button onClick={goToInformation} className='w-1/2'>
+                <div className='flex mt-12 justify-between text-sm lg:text-base'>
+                  <div className='flex items-center text-gray-400 w-1/2'>
+                    <ChevronLeftIcon className='w-4 h-4 mr-1 col-span-1' />
+                    <button
+                      onClick={goToInformation}
+                      className='w-full text-left'
+                    >
                       Return to information
                     </button>
                   </div>
                   <button
-                    className='bg-black text-white py-5 md:px-8 text-sm font-bold'
+                    className='bg-black text-white py-5 w-1/2 md:w-1/3 md:px-8 text-sm font-bold'
                     onClick={goToPayment}
                   >
                     CONTINUE TO PAYMENT

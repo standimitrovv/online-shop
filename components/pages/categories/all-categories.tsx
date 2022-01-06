@@ -142,7 +142,7 @@ const AllCategoriesPage: React.FC<Props> = ({ items }) => {
         <div className='xl:mt-4'>
           <h1 className='border-b border-black text-base'>SORT BY</h1>
           <select
-            className='py-2 px-2 mt-2 xl:mt-4'
+            className='py-2 px-2 mt-2 xl:mt-4 w-full'
             onChange={(e) => setSortType(e.target.value)}
           >
             <option>Select</option>

@@ -6,7 +6,7 @@ const CountryDropDown = React.forwardRef<HTMLSelectElement>((props, ref) => {
     <select
       id='country'
       name='country'
-      className='px-4 py-3 rounded-sm w-full mt-4'
+      className='px-4 py-4 rounded-sm w-full mt-4'
       ref={ref}
     >
       <option value='United Kingdom'>United Kingdom</option>

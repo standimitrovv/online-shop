@@ -45,8 +45,12 @@ const SingleCategoryPage: React.FC<Props> = ({ categoryData }) => {
   const formattedIndividualCategory = individualCategory.includes('%20')
     ? individualCategory.split('%20').join(' ').toUpperCase()
     : individualCategory.includes('-') && individualCategory.indexOf('-') > 3
-    ? individualCategory.replace('-', ' ').toUpperCase()
+    ? individualCategory.replace(/\-/g, ' ').toUpperCase()
     : individualCategory.toUpperCase();
+
+  const individualCategoryPath = individualCategory.includes('%20')
+    ? individualCategory.split('%20').join('-')
+    : individualCategory;
 
   useEffect(() => {
     const sortByHandler = (type: keyof sortingObject) => {
@@ -87,7 +91,9 @@ const SingleCategoryPage: React.FC<Props> = ({ categoryData }) => {
           </button>
           <p>/</p>
           <button
-            onClick={() => router.push(`/${category}/${individualCategory}`)}
+            onClick={() =>
+              router.push(`/${category}/${individualCategoryPath}`)
+            }
             className='font-bold ml-2'
           >
             {formattedIndividualCategory}

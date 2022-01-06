@@ -63,9 +63,13 @@ const CategoryItemPage: React.FC<Props> = ({ item }) => {
       dispatch(cartActions.addToCart(item));
     }
     if (sizeIsSelected !== 'default') {
+      const numberRegex = /[0-9]/g;
+      const size = numberRegex.test(sizeIsSelected)
+        ? +sizeIsSelected
+        : sizeIsSelected;
       const newItem = {
         ...item,
-        size: +sizeIsSelected,
+        size,
       };
       dispatch(cartActions.addToCart(newItem));
     }

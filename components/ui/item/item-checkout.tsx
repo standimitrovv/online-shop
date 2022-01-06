@@ -19,6 +19,7 @@ const ItemCheckout: React.FC<Props> = ({
   quantity,
 }) => {
   const itemTotal = price * quantity;
+
   return (
     <li className='grid grid-cols-4 mt-4 items-center justify-center'>
       <div>

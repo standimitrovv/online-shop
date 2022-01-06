@@ -95,6 +95,7 @@ const ItemPreviewCheckout: React.FC<Props> = ({
   const autoCloseMenuHandler = () => {
     onPress();
   };
+
   return (
     <div className='grid grid-cols-2 w-full py-2 font-mont border-b group hover:bg-gray-50 '>
       <Link href={path}>
